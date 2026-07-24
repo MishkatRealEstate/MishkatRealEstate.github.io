@@ -1066,22 +1066,22 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
 // Chat Widget
 const projects = [
-  {id:1,name:'بيت الوطن - الحي الثاني',url:'project.html?id=beit-elwatan-2'},
-  {id:2,name:'بيت الوطن - الحي الثامن',url:'project.html?id=beit-elwatan-8'},
-  {id:3,name:'Garnet - بيت الوطن',url:'project.html?id=garnet'},
-  {id:4,name:'Emerald - بيت الوطن - الثاني',url:'project.html?id=emerald-2'},
-  {id:5,name:'TOPAZ - بيت الوطن - الثامن',url:'project.html?id=topaz'},
-  {id:6,name:'Emerald - بيت الوطن - السادس',url:'project.html?id=emerald-6'},
-  {id:7,name:'Quartz - بيت الوطن - الثاني',url:'project.html?id=quartz'},
-  {id:8,name:'Pearl - بيت الوطن - الثاني',url:'project.html?id=pearl'},
-  {id:9,name:'شمال الرحاب 1',url:'project.html?id=north-rehab-1'},
-  {id:10,name:'شمال الرحاب 2',url:'project.html?id=north-rehab-2'},
-  {id:11,name:'AMBER - التكميلية',url:'project.html?id=amber'}
+  {id:1,name:'بيت الوطن - الحي الثاني',url:'project.html?id=beit-elwatan-2',lp:'landing.html?id=beit-elwatan-2'},
+  {id:2,name:'بيت الوطن - الحي الثامن',url:'landing.html?id=beit-elwatan-8'},
+  {id:3,name:'Garnet - بيت الوطن',url:'landing.html?id=garnet'},
+  {id:4,name:'Emerald - بيت الوطن - الثاني',url:'project.html?id=emerald-2',lp:'landing.html?id=emerald-2'},
+  {id:5,name:'TOPAZ - بيت الوطن - الثامن',url:'project.html?id=topaz',lp:'landing.html?id=topaz'},
+  {id:6,name:'Emerald - بيت الوطن - السادس',url:'project.html?id=emerald-6',lp:'landing.html?id=emerald-6'},
+  {id:7,name:'Quartz - بيت الوطن - الثاني',url:'project.html?id=quartz',lp:'landing.html?id=quartz'},
+  {id:8,name:'Pearl - بيت الوطن - الثاني',url:'landing.html?id=pearl'},
+  {id:9,name:'شمال الرحاب 1',url:'project.html?id=north-rehab-1',lp:'landing.html?id=north-rehab-1'},
+  {id:10,name:'شمال الرحاب 2',url:'project.html?id=north-rehab-2',lp:'landing.html?id=north-rehab-2'},
+  {id:11,name:'AMBER - التكميلية',url:'landing.html?id=amber'}
 ];
 function toggleChat() { const b=document.getElementById('chatBox'); b.classList.toggle('open'); if(b.classList.contains('open')&&!document.getElementById('chatMsgs').children.length)showMenu(); }
 function addMsg(txt,cls){ const d=document.getElementById('chatMsgs'),m=document.createElement('div'); m.className='chat-msg '+cls; m.innerHTML=txt.replace(/\n/g,'<br>'); d.appendChild(m); d.scrollTop=d.scrollHeight; }
 function showMenu(){ addMsg('مرحباً بك في مشكاة العقارية 🌟\nاختر رقم المشروع لترى التفاصيل:','bot'); projects.forEach(p=>{const m=document.createElement('div');m.className='chat-msg option';m.textContent=p.id+'. '+p.name;m.onclick=()=>showProject(p);document.getElementById('chatMsgs').appendChild(m)}); const h=document.createElement('div');h.className='chat-msg option';h.textContent='📞 التحدث مع بشر';h.onclick=()=>humanSupport();document.getElementById('chatMsgs').appendChild(h); }
-function showProject(p){ addMsg(p.name,'user'); addMsg('🏡 '+p.name+'\n📍 القاهرة الجديدة\n💰 للمعاينة والتفاصيل:\n'+window.location.origin+'/'+p.url+'\nأو تواصل معنا واتساب','bot'); showMenu(); }
+function showProject(p){ addMsg(p.name,'user'); const u = p.lp || p.url; addMsg('🏡 '+p.name+'\n📍 القاهرة الجديدة\n💰 للمعاينة والتفاصيل:\n'+window.location.origin+'/'+u+'\nأو تواصل معنا واتساب','bot'); showMenu(); }
 function humanSupport(){ addMsg('📞 طلب تحدث مع بشر','user'); const d={الاسم:'زائر',الهاتف:'',البريد:'',المشروع:'تواصل بشر - شات',الرسالة:'طلب التواصل مع بشر من الشات'}; navigator.sendBeacon('https://script.google.com/macros/s/AKfycbzhV6EC5cHlzeiLXdcQvhlbCMC87v2gVqnG9hrPj0a5BX1CUboRIatK4VidqQ65Xns2/exec',JSON.stringify(d)); addMsg('تم إرسال طلبك. سنتواصل معك قريباً 📞\nاختر وسيلة التواصل:','bot'); const w=document.createElement('div');w.className='chat-msg option';w.textContent='💬 واتساب';w.onclick=()=>window.open('https://wa.me/201002416892','_blank');document.getElementById('chatMsgs').appendChild(w); const f=document.createElement('div');f.className='chat-msg option';f.textContent='✏️ ماسنجر';f.onclick=()=>window.open('https://m.me/61592147322310','_blank');document.getElementById('chatMsgs').appendChild(f); }
 function sendMsg(){ const inp=document.getElementById('chatInput'),txt=inp.value.trim(); if(!txt)return; inp.value=''; addMsg(txt,'user'); const num=parseInt(txt); const p=projects.find(x=>x.id===num); if(p)showProject(p); else { addMsg('للأسف لم أفهم طلبك. اختر رقم مشروع من القائمة 👇','bot'); showMenu(); } }
 </script>
