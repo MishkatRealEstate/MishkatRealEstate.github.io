@@ -970,14 +970,10 @@ function sendForm(e) {
   const email = document.getElementById('formEmail').value.trim();
   const project = document.getElementById('formProject').value;
   const message = document.getElementById('formMessage').value.trim();
-  const body = 'الاسم: ' + name + '%0Aالهاتف: ' + phone + '%0Aالبريد: ' + (email || '—') + '%0Aالمشروع: ' + (project || '—') + '%0Aالرسالة: ' + message;
-  window.open('mailto:infomishkatrealestate@gmail.com?subject=استفسار من ' + encodeURIComponent(name) + '&body=' + body);
+  const body = 'الاسم: ' + name + '%0Aالهاتف: ' + phone + '%0Aالبريد: ' + (email || '—') + '%0Aالمشروع: ' + (project || '—') + '%0A%0A' + message;
+  const mailto = 'mailto:infomishkatrealestate@gmail.com?subject=' + encodeURIComponent('استفسار من ' + name) + '&body=' + body;
+  window.location.href = mailto;
   document.getElementById('formSuccess').style.display = 'block';
-  document.getElementById('formName').value = '';
-  document.getElementById('formPhone').value = '';
-  document.getElementById('formEmail').value = '';
-  document.getElementById('formProject').value = '';
-  document.getElementById('formMessage').value = '';
   return false;
 }
 
