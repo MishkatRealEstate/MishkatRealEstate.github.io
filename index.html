@@ -876,19 +876,17 @@ footer {
       </div>
       <div class="contact-form">
         <h3>أرسل لنا استفسارك</h3>
-        <form action="https://formsubmit.co/infomishkatrealestate@gmail.com" method="POST">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://mishkatrealestate.github.io/">
-          <input type="hidden" name="_subject" value="استفسار جديد من موقع مشكاة">
-          <div class="form-group"><input type="text" name="الاسم" placeholder="الاسم بالكامل" required></div>
-          <div class="form-group"><input type="tel" name="الهاتف" placeholder="رقم الهاتف" required></div>
-          <div class="form-group"><input type="email" name="البريد" placeholder="البريد الإلكتروني"></div>
+        <form onsubmit="return sendForm(event)">
+          <div class="form-group"><input type="text" id="formName" placeholder="الاسم بالكامل" required></div>
+          <div class="form-group"><input type="tel" id="formPhone" placeholder="رقم الهاتف" required></div>
+          <div class="form-group"><input type="email" id="formEmail" placeholder="البريد الإلكتروني"></div>
           <div class="form-group">
-            <select><option>اختر المشروع</option><option>بيت الوطن - الحي الثاني (12M)</option><option>بيت الوطن - الحي الثامن (138J)</option><option>Garnet - بيت الوطن - الرابع</option><option>Emerald - بيت الوطن - الثاني</option><option>TOPAZ - بيت الوطن - الثامن</option><option>Emerald - بيت الوطن - السادس</option><option>Quartz - بيت الوطن - الثاني</option><option>Pearl - بيت الوطن - الثاني</option><option>شمال الرحاب 1</option><option>شمال الرحاب 2</option><option>AMBER - التكميلية</option><option>أخرى</option></select>
+            <select id="formProject"><option value="">اختر المشروع</option><option>بيت الوطن - الحي الثاني</option><option>بيت الوطن - الحي الثامن</option><option>Garnet - بيت الوطن - الرابع</option><option>Emerald - بيت الوطن - الثاني</option><option>TOPAZ - بيت الوطن - الثامن</option><option>Emerald - بيت الوطن - السادس</option><option>Quartz - بيت الوطن - الثاني</option><option>Pearl - بيت الوطن - الثاني</option><option>شمال الرحاب 1</option><option>شمال الرحاب 2</option><option>AMBER - التكميلية</option><option>أخرى</option></select>
           </div>
-          <div class="form-group"><textarea placeholder="رسالتك..."></textarea></div>
+          <div class="form-group"><textarea id="formMessage" placeholder="رسالتك..." required></textarea></div>
           <button type="submit" class="btn btn-gold" style="width:100%;font-size:16px;">إرسال الاستفسار</button>
         </form>
+        <div id="formSuccess" style="display:none;background:#e8f5e9;padding:20px;border-radius:10px;text-align:center;margin-top:10px;color:#2e7d32;font-weight:600;">✅ تم فتح بريدك الإلكتروني. أرسل الرسالة وسنرد عليك فوراً.</div>
       </div>
     </div>
   </div>
@@ -962,6 +960,25 @@ function filterProjects(cat) {
   document.querySelectorAll('[id^="filter-"]').forEach(b => {
     b.className = 'btn ' + (b.id === 'filter-' + cat ? 'btn-gold' : 'btn-outline');
   });
+}
+
+// Form submit - opens email client
+function sendForm(e) {
+  e.preventDefault();
+  const name = document.getElementById('formName').value.trim();
+  const phone = document.getElementById('formPhone').value.trim();
+  const email = document.getElementById('formEmail').value.trim();
+  const project = document.getElementById('formProject').value;
+  const message = document.getElementById('formMessage').value.trim();
+  const body = 'الاسم: ' + name + '%0Aالهاتف: ' + phone + '%0Aالبريد: ' + (email || '—') + '%0Aالمشروع: ' + (project || '—') + '%0Aالرسالة: ' + message;
+  window.open('mailto:infomishkatrealestate@gmail.com?subject=استفسار من ' + encodeURIComponent(name) + '&body=' + body);
+  document.getElementById('formSuccess').style.display = 'block';
+  document.getElementById('formName').value = '';
+  document.getElementById('formPhone').value = '';
+  document.getElementById('formEmail').value = '';
+  document.getElementById('formProject').value = '';
+  document.getElementById('formMessage').value = '';
+  return false;
 }
 
 // Scroll animations
