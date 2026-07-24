@@ -1006,7 +1006,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   if (!phone.startsWith('+')) { phone = '+2' + phone.replace(/^0+/,''); }
   this.الهاتف.value = phone;
   const data = {الاسم:this.الاسم.value,الهاتف:phone,البريد:this.البريد.value,المشروع:this.المشروع.value,الرسالة:this.الرسالة.value};
-  fetch('https://script.google.com/macros/s/AKfycbzd6Rs2WHHV8faT4xZewYWvxAinNEwFClfikKVknzuY9g3A6ach2AXblwi-FSUTrsnW/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbzhV6EC5cHlzeiLXdcQvhlbCMC87v2gVqnG9hrPj0a5BX1CUboRIatK4VidqQ65Xns2/exec', {
     method: 'POST', body: JSON.stringify(data)
   }).then(() => { this.submit(); }).catch(() => { this.submit(); });
 });
