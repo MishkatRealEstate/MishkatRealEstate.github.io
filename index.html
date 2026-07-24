@@ -876,7 +876,7 @@ footer {
       </div>
       <div class="contact-form">
         <h3>أرسل لنا استفسارك</h3>
-        <form action="https://formsubmit.co/infomishkatrealestate@gmail.com" method="POST">
+        <form id="contactForm" action="https://formsubmit.co/infomishkatrealestate@gmail.com" method="POST">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="https://mishkatrealestate.github.io/">
           <input type="hidden" name="_subject" value="💬 استفسار جديد من موقع مشكاة العقاري">
@@ -997,6 +997,15 @@ window.addEventListener('scroll', () => {
   } else {
     header.style.background = 'rgba(13, 59, 79, 0.95)';
   }
+});
+
+// Form to Google Sheet
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = {الاسم:this.الاسم.value,الهاتف:this.الهاتف.value,البريد:this.البريد.value,المشروع:this.المشروع.value,الرسالة:this.الرسالة.value};
+  fetch('https://script.google.com/macros/s/AKfycbw9QpDU2aLlBXoti1uZHH3l6Un4EWmydle6hesuAljmeAgqMJCNLQO8Phy99nI170Ns/exec', {
+    method: 'POST', body: JSON.stringify(data)
+  }).then(() => { this.submit(); }).catch(() => { this.submit(); });
 });
 </script>
 </body>
