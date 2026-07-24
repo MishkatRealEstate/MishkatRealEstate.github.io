@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">مشروع - مشكاة للتسويق العقاري</title>
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6HZ4289SLR"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6HZ4289SLR');</script>
+<style>
+:root{--primary:#0d3b4f;--primary-light:#156077;--gold:#d4a843;--gold-light:#e8c46a;--bg:#f5f3ef;--white:#fff;--text:#333}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);direction:rtl}
+.hero{background:linear-gradient(135deg,var(--primary),#082530);color:#fff;padding:60px 20px 40px;text-align:center}
+.hero h1{font-size:36px;margin-bottom:5px}
+.hero h1 span{color:var(--gold)}
+.hero .price{font-size:24px;color:var(--gold);font-weight:700;margin:10px 0}
+.hero .tagline{font-size:15px;opacity:.9;max-width:600px;margin:0 auto 20px}
+.hero .badge{display:inline-block;background:var(--gold);color:var(--primary);padding:4px 16px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:10px}
+.cta-big{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--primary);padding:14px 40px;border-radius:50px;font-size:18px;font-weight:800;text-decoration:none;transition:.3s;margin:5px}
+.cta-big:hover{transform:scale(1.05);box-shadow:0 8px 30px rgba(212,168,67,.4)}
+.cta-wa{display:inline-block;background:#25d366;color:#fff;padding:14px 40px;border-radius:50px;font-size:18px;font-weight:800;text-decoration:none;transition:.3s;margin:5px}
+.cta-wa:hover{transform:scale(1.05)}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+section{padding:40px 0}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{font-size:26px;color:var(--primary);position:relative;display:inline-block}
+.section-title h2::after{content:'';display:block;width:60px;height:3px;background:var(--gold);margin:8px auto}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-radius:12px;overflow:hidden}
+.gallery img{width:100%;height:250px;object-fit:cover;cursor:pointer;transition:.3s}
+.gallery img:hover{transform:scale(1.03)}
+.gallery img:first-child{grid-column:1/-1;height:320px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.features div{background:var(--white);padding:12px 16px;border-radius:10px;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:8px}
+.features div::before{content:'✓';color:var(--gold);font-weight:800;font-size:18px}
+.details-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.details-table td{padding:12px 16px;border-bottom:1px solid #eee;font-size:14px}
+.details-table td:first-child{font-weight:700;color:var(--primary);width:140px}
+.why-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.why-card{background:var(--white);padding:24px;border-radius:12px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.why-card .icon{font-size:36px;margin-bottom:10px}
+.why-card h3{color:var(--primary);font-size:16px;margin-bottom:6px}
+.why-card p{font-size:13px;color:#666}
+.contact-form{background:var(--white);padding:30px;border-radius:12px;max-width:500px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.contact-form h3{text-align:center;font-size:20px;color:var(--primary);margin-bottom:15px}
+.form-group{margin-bottom:12px}
+.form-group input,.form-group textarea{width:100%;padding:12px;border:2px solid #eee;border-radius:8px;font-family:inherit;font-size:14px;outline:none}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{height:80px;resize:vertical}
+.contact-form button{width:100%;padding:12px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;border-radius:8px;font-size:16px;font-weight:700;color:var(--primary);cursor:pointer;transition:.3s}
+.contact-form button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,168,67,.4)}
+.trust{text-align:center;padding:30px}
+.trust p{font-size:14px;color:#666;margin:4px 0}
+.fixed-wa{position:fixed;bottom:20px;left:20px;background:#25d366;color:#fff;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;font-size:28px;transition:.3s}
+.fixed-wa:hover{transform:scale(1.1)}
+.fixed-chat{position:fixed;bottom:20px;right:20px;background:var(--gold);color:var(--primary-dark);width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(212,168,67,.4);z-index:999;font-size:24px;transition:.3s;border:none;cursor:pointer}
+.fixed-chat:hover{transform:scale(1.1)}
+@media(max-width:768px){.hero h1{font-size:26px}.hero .price{font-size:20px}.gallery{grid-template-columns:1fr}.gallery img{height:200px}.gallery img:first-child{height:240px}.why-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero" id="hero">
+  <div class="container">
+    <div class="badge" id="heroBadge">✨ حجز وحدات محدودة</div>
+    <h1>مشكاة <span id="heroName">العقارية</span></h1>
+    <div class="price" id="heroPrice"></div>
+    <p class="tagline" id="heroDesc"></p>
+    <a class="cta-big" id="ctaForm" href="#form">📋 احجز موعد معاينة</a>
+    <a class="cta-wa" id="ctaWa" href="https://wa.me/201002416892" target="_blank">💬 تواصل واتساب</a>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Gallery -->
+  <section>
+    <div class="section-title"><h2>📸 معرض الصور</h2></div>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <!-- Why -->
+  <section>
+    <div class="section-title"><h2>⭐ لماذا هذا المشروع؟</h2></div>
+    <div class="why-grid" id="whyGrid">
+      <div class="why-card"><div class="icon">📍</div><h3>موقع استراتيجي</h3><p>أفضل المواقع في القاهرة الجديدة، قرب الخدمات والمواصلات</p></div>
+      <div class="why-card"><div class="icon">💰</div><h3>أقل سعر</h3><p>وفر 50% وأكثر مقارنة بسعر السوق</p></div>
+      <div class="why-card"><div class="icon">🔒</div><h3>خصوصية تامة</h3><p>أقل كثافة سكنية في المنطقة</p></div>
+    </div>
+  </section>
+
+  <!-- Details -->
+  <section>
+    <div class="section-title"><h2>📋 تفاصيل المشروع</h2></div>
+    <table class="details-table" id="detailsTable"></table>
+  </section>
+
+  <!-- Features -->
+  <section>
+    <div class="section-title"><h2>🏗️ المواصفات والتشطيبات</h2></div>
+    <div class="features" id="featuresList"></div>
+  </section>
+
+  <!-- Location -->
+  <section>
+    <div class="section-title"><h2>🗺️ الموقع على الخريطة</h2></div>
+    <div id="projectMap" style="border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08)"></div>
+  </section>
+
+  <!-- Form -->
+  <section id="form">
+    <div class="section-title"><h2>📩 احجز وحدتك الآن</h2></div>
+    <div class="contact-form">
+      <h3>سجل استفسارك وسنعود إليك فوراً</h3>
+      <form id="contactForm" action="https://formsubmit.co/infomishkatrealestate@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://mishkatrealestate.github.io/landing.html?id=thankyou">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="المشروع" id="projectInput" value="">
+        <div class="form-group"><input type="text" name="الاسم" placeholder="الاسم بالكامل" required></div>
+        <div class="form-group"><input type="tel" name="الهاتف" placeholder="رقم الهاتف (مثال: 01002416892)" required></div>
+        <div class="form-group"><input type="email" name="البريد" placeholder="البريد الإلكتروني"></div>
+        <div class="form-group"><textarea name="الرسالة" placeholder="رسالتك..." required>أود حجز موعد معاينة لهذا المشروع</textarea></div>
+        <button type="submit">إرسال الطلب 🔥</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="trust">
+    <p>✅ أكثر من 12 عاماً في السوق العقاري</p>
+    <p>✅ 17+ مشروعاً في القاهرة الجديدة</p>
+    <p>✅ جميع الوحدات قانونية وبأسعار تنافسية</p>
+  </section>
+</div>
+
+<a class="fixed-wa" href="https://wa.me/201002416892" target="_blank" title="واتساب">💬</a>
+<button class="fixed-chat" onclick="window.location.href='https://mishkatrealestate.github.io/'" title="الشات الذكي">💬</button>
+
+<script>
+const projects = {
+  "garnet": {
+    name: "Garnet – بيت الوطن – الحي الرابع",
+    location: "بيت الوطن - الحي الرابع - القاهرة الجديدة",
+    cover: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-cover-mobile.webp",
+    description: "يتميز المشروع بموقع فريد على واجهة بحرية في بيت الوطن الحي الرابع، يتمتع بقلة الكثافة السكانية والخصوصية التامة، بخطوات من أكبر منطقة خدمات وترفيه View Zone في الحي الرابع. دقيقتان من شارع النوادي، دقائق من مول مصر وميدان المشير طنطاوي والقاهرة الجديدة والعاصمة الإدارية.",
+    images: ["https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-cover-mobile.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-cover.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-2.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-3.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-4.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-5.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-6.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-7.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-8.webp"],
+    map: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-map.jpg",
+    details: [
+      {key:"المساحات",value:"130-225 م² (متكرر + رووف + بدروم)"},
+      {key:"الموقع",value:"بيت الوطن - الحي الرابع - واجهة بحرية"},
+      {key:"النوع",value:"شقق سكنية (متكرر - رووف - بدروم)"},
+      {key:"الاستلام",value:"تشطيب مصنع (مباشر)"}
+    ],
+    features: ["زجاج مرآة","دهانات جوتاشيلد","حديد مشغول","واجهات حجر","إضاءة مباشرة","إضاءة غير مباشرة","جراج","مصعد","أمن","كاميرات"],
+    price: "وفر 50% وأكثر"
+  },
+  "pearl": {
+    name: "Pearl – بيت الوطن – الحي الثاني",
+    location: "بيت الوطن - الحي الثاني - القاهرة الجديدة",
+    cover: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-cover-mobile.webp",
+    description: "أحد المشروعات المميزة في بيت الوطن بالحي الثاني. يتميز بتشطيب مصنع فاخر، موقع استراتيجي على واجهة رئيسية، وقلة الكثافة السكانية. قريب من جميع الخدمات والمواصلات.",
+    images: ["https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-cover-mobile.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-cover.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-2.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-3.jpg","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-4.jpg","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-5.jpg","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-6.jpg"],
+    map: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-map.jpg",
+    details: [
+      {key:"المساحات",value:"متنوعة"},
+      {key:"الموقع",value:"بيت الوطن - الحي الثاني"},
+      {key:"النوع",value:"شقق سكنية"},
+      {key:"الاستلام",value:"تشطيب مصنع"}
+    ],
+    features: ["تشطيب مصنع","جراج","مصعد","أمن وحراسة","كاميرات","أبواب مصفحة","عزل مائي وحراري","لاندسكيب"],
+    price: "خصم خاص لفترة محدودة"
+  },
+  "beit-elwatan-8": {
+    name: "بيت الوطن – الحي الثامن",
+    location: "بيت الوطن - الحي الثامن - القاهرة الجديدة",
+    cover: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-cover-mobile.webp",
+    description: "مشروع في بيت الوطن بالحي الثامن، الأقرب للعاصمة الإدارية ومحور محمد بن زايد. يتميز بخطوات من View Zone، دقيقتان من شارع النوادي، وأقل كثافة سكنية في المنطقة.",
+    images: ["https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-cover-mobile.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-cover.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-map.jpg"],
+    map: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-map.jpg",
+    details: [
+      {key:"المساحات",value:"175-200 م²"},
+      {key:"الموقع",value:"الحي الثامن - بيت الوطن"},
+      {key:"النوع",value:"شقق سكنية"},
+      {key:"الاستلام",value:"تشطيب مصنع"}
+    ],
+    features: ["جراج خاص","مصعد كهربائي","أمن وحراسة","كاميرات مراقبة","أبواب مصفحة","بوابات إلكترونية","نظام إدارة المبنى","لاندسكيب","توصيلات سباكة","عزل مائي وحراري"],
+    price: "وفر 50% وأكثر"
+  },
+  "amber": {
+    name: "AMBER – المنطقة التكميلية",
+    location: "المنطقة التكميلية - جنوب طريق السويس",
+    cover: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-cover-mobile.webp",
+    description: "مشروع متميز في المنطقة التكميلية جنوب طريق السويس. يبعد دقائق من القاهرة الجديدة والعاصمة الإدارية. كثافة سكانية منخفضة للغاية، خدمات وترفيه على أعلى مستوى.",
+    images: ["https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-cover-mobile.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-cover.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-2.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-3.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-4.webp"],
+    map: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-map.jpg",
+    details: [
+      {key:"المساحات",value:"متنوعة"},
+      {key:"الموقع",value:"المنطقة التكميلية - جنوب طريق السويس"},
+      {key:"النوع",value:"شقق سكنية"},
+      {key:"الاستلام",value:"تشطيب مصنع (مباشر)"}
+    ],
+    features: ["جراج","مصعد","أمن وحراسة","كاميرات","أبواب مصفحة","بوابات إلكترونية","عزل","لاندسكيب"],
+    price: "أقل سعر في المنطقة"
+  }
+};
+
+const id = new URLSearchParams(location.search).get('id') || 'garnet';
+const p = projects[id];
+
+const names = {garnet:'Garnet',pearl:'Pearl','beit-elwatan-8':'بيت الوطن الثامن',amber:'AMBER'};
+const urlName = names[id] || id;
+const projectSlug = urlName;
+
+if (!p) { document.body.innerHTML = '<div style="text-align:center;padding:80px 20px"><h1>المشروع غير موجود</h1><a href="https://mishkatrealestate.github.io/" style="color:var(--gold);">العودة للرئيسية</a></div>'; throw ''; }
+
+document.title = p.name + ' | مشكاة للتسويق العقاري';
+document.getElementById('heroName').textContent = p.name;
+document.getElementById('heroPrice').textContent = p.price;
+document.getElementById('heroDesc').textContent = p.description.substring(0,150)+'...';
+
+const gallery = document.getElementById('gallery');
+p.images.forEach(i => { const img = document.createElement('img'); img.src = i; img.alt = p.name; img.onclick = () => window.open(i); gallery.appendChild(img); });
+
+const details = document.getElementById('detailsTable');
+p.details.forEach(d => { const tr = document.createElement('tr'); tr.innerHTML = '<td>'+d.key+'</td><td>'+d.value+'</td>'; details.appendChild(tr); });
+
+const features = document.getElementById('featuresList');
+p.features.forEach(f => { const d = document.createElement('div'); d.textContent = f; features.appendChild(d); });
+
+document.getElementById('projectMap').innerHTML = '<img src="'+p.map+'" alt="خريطة '+p.name+'" style="width:100%;height:auto;border-radius:12px;">';
+
+document.getElementById('projectInput').value = p.name;
+document.getElementById('ctaForm').href = '#form';
+
+// Form submit to Sheet
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  let phone = this.الهاتف.value.replace(/[^0-9+]/g,'');
+  if (!phone.startsWith('+')) { phone = '+2' + phone.replace(/^0+/,''); }
+  this.الهاتف.value = phone;
+  const data = {الاسم:this.الاسم.value,الهاتف:phone,البريد:this.البريد.value,المشروع:this.المشروع.value,الرسالة:this.الرسالة.value};
+  navigator.sendBeacon('https://script.google.com/macros/s/AKfycbzhV6EC5cHlzeiLXdcQvhlbCMC87v2gVqnG9hrPj0a5BX1CUboRIatK4VidqQ65Xns2/exec', JSON.stringify(data));
+  this.submit();
+});
+</script>
+</body>
+</html>
