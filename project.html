@@ -113,6 +113,27 @@ header {
 .spec-icon { font-size: 16px; }
 
 /* Contact CTA */
+/* Gallery */
+.gallery {margin-top:30px}
+.gallery h3{font-size:20px;color:var(--primary);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--gold);display:inline-block}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:12px}
+.gallery-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;cursor:pointer;transition:.3s;background:var(--bg)}
+.gallery-item:hover{transform:scale(1.02);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery-item .gallery-badge{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;padding:4px 10px;border-radius:6px}
+.gallery-add{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;border:2px dashed var(--gold);border-radius:12px;color:var(--gold);font-size:14px;font-weight:600;cursor:pointer;transition:.3s;background:transparent}
+.gallery-add:hover{background:rgba(212,168,67,.08)}
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox img{max-width:90vw;max-height:90vh;border-radius:8px}
+.lightbox .close-lb{position:absolute;top:20px;left:20px;color:#fff;font-size:30px;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);border-radius:50%;border:none}
+.lightbox .close-lb:hover{background:rgba(255,255,255,.2)}
+.lightbox .nav-lb{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:36px;cursor:pointer;padding:12px;background:rgba(255,255,255,.08);border-radius:50%;width:52px;height:52px;display:flex;align-items:center;justify-content:center;border:none;transition:.2s}
+.lightbox .nav-lb:hover{background:rgba(255,255,255,.2)}
+.lightbox .nav-lb.prev{right:20px}
+.lightbox .nav-lb.next{left:20px}
+
 .cta-section {
   background: var(--primary); padding: 40px; border-radius: 14px;
   text-align: center; color: var(--white); margin-top: 30px;
@@ -200,6 +221,13 @@ footer {
         </div>
       </div>
 
+      <!-- Gallery -->
+      <div class="gallery">
+        <h3>📷 معرض الصور والفيديو</h3>
+        <p style="color:var(--text-light);font-size:13px;margin-bottom:8px">اضغط على أي صورة لتكبيرها — يمكنك إضافة صور وفيديوهات المشروع لاحقاً</p>
+        <div class="gallery-grid" id="projectGallery"></div>
+      </div>
+
       <div class="cta-section">
         <h3>احجز وحدتك الآن</h3>
         <p>تواصل معنا للحصول على أفضل العروض والأسعار</p>
@@ -207,6 +235,14 @@ footer {
           💬 تواصل واتساب
         </a>
         <a href="mailto:infomishkatrealestate@gmail.com" class="btn btn-gold">📧 راسلنا</a>
+      </div>
+
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox" onclick="closeLB(event)">
+        <button class="close-lb" onclick="closeLB()">✕</button>
+        <button class="nav-lb prev" onclick="navLB(-1)">❮</button>
+        <img id="lbImg" src="" alt="">
+        <button class="nav-lb next" onclick="navLB(1)">❯</button>
       </div>
     </div>
   </div>
@@ -269,8 +305,7 @@ const projects = {
       { key: "الموقع", value: "شارع فاصل - قرب الخدمات" },
       { key: "التشطيب", value: "زجاج سيكوريت - جوتن - جبس - حجر" }
     ],
-    features: ["زجاج سيكوريت", "دهانات جوتن", "حديد مشغول", "جبس", "حجر", "جراج", "مصعد", "أمن وحراسة", "كاميرات مراقبة"],
-    img: {type:'cover',val:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/l43-cover.webp'}
+    features: ["زجاج سيكوريت", "دهانات جوتن", "حديد مشغول", "جبس", "حجر", "جراج", "مصعد", "أمن وحراسة", "كاميرات مراقبة"]
   },
   "topaz-a58": {
     name: "TOPAZ – بيت الوطن – الحي الثامن",
@@ -308,8 +343,7 @@ const projects = {
       { key: "المميزات", value: "Smart Home + عزل حراري" },
       { key: "الإطلالة", value: "على جاردن - بحر شرقي" }
     ],
-    features: ["Smart Home", "عزل حراري", "نظام كهرباء ذكي", "أرضيات بورسلين", "جراج", "مصعد", "كاميرات", "أمن", "لاندسكيب", "إضاءة ذكية"],
-    img: {type:'cover',val:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/f72-cover.webp'}
+    features: ["Smart Home", "عزل حراري", "نظام كهرباء ذكي", "أرضيات بورسلين", "جراج", "مصعد", "كاميرات", "أمن", "لاندسكيب", "إضاءة ذكية"]
   },
   "pearl-e120": {
     name: "Pearl – بيت الوطن – الحي الثاني",
@@ -321,8 +355,7 @@ const projects = {
       { key: "الموقع", value: "3 دقائق لشارع 90" },
       { key: "التشطيب", value: "تشطيب مصنع (Factory finishing)" }
     ],
-    features: ["تشطيب مصنع", "جراج", "مصعد", "أمن وحراسة", "كاميرات", "أبواب مصفحة", "عزل مائي وحراري", "لاندسكيب"],
-    img: {type:'cover',val:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/e120-cover.webp'}
+    features: ["تشطيب مصنع", "جراج", "مصعد", "أمن وحراسة", "كاميرات", "أبواب مصفحة", "عزل مائي وحراري", "لاندسكيب"]
   },
   "h40": {
     name: "شمال الرحاب 1",
@@ -347,8 +380,7 @@ const projects = {
       { key: "الموقع", value: "شمال طريق السويس - جنوب الرحاب" },
       { key: "المميزات", value: "5 دقائق من المطار - 7 دقائق للعاصمة" }
     ],
-    features: ["خصوصية تامة", "كثافة سكانية منخفضة", "Concrete Shield", "جراج", "مصعد", "أمن", "كاميرات", "واجهات فاخرة", "عزل تام"],
-    img: {type:'cover',val:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/h39-cover.webp'}
+    features: ["خصوصية تامة", "كثافة سكانية منخفضة", "Concrete Shield", "جراج", "مصعد", "أمن", "كاميرات", "واجهات فاخرة", "عزل تام"]
   },
   "amber-b154": {
     name: "AMBER – المنطقة التكميلية",
@@ -360,8 +392,7 @@ const projects = {
       { key: "الموقع", value: "شارع 90 الشمالي - التكميلية" },
       { key: "قرب", value: "دقائق من مدينة نصر والقاهرة الجديدة" }
     ],
-    features: ["جراج", "مصعد", "أمن وحراسة", "كاميرات", "أبواب مصفحة", "بوابات إلكترونية", "عزل", "لاندسكيب"],
-    img: {type:'cover',val:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/b154-cover.webp'}
+    features: ["جراج", "مصعد", "أمن وحراسة", "كاميرات", "أبواب مصفحة", "بوابات إلكترونية", "عزل", "لاندسكيب"]
   }
 };
 
@@ -377,10 +408,6 @@ if (project) {
   document.getElementById('projectLocation').textContent = '📍 ' + project.location;
   if (project.img && project.img.type === 'youtube') {
     document.getElementById('projectHero').style.backgroundImage = "url('https://img.youtube.com/vi/"+project.img.val+"/maxresdefault.jpg')";
-    document.getElementById('projectHero').style.backgroundSize = 'cover';
-    document.getElementById('projectHero').style.backgroundPosition = 'center';
-  } else if (project.img && project.img.type === 'cover') {
-    document.getElementById('projectHero').style.backgroundImage = "url('"+project.img.val+"')";
     document.getElementById('projectHero').style.backgroundSize = 'cover';
     document.getElementById('projectHero').style.backgroundPosition = 'center';
   } else {
@@ -400,13 +427,54 @@ if (project) {
     featuresDiv.innerHTML += '<div class="spec-item"><span class="spec-icon">✦</span>' + f + '</div>';
   });
 
-  // Gallery & Map removed (pending images)
+  // Gallery
+  const galleryDiv = document.getElementById('projectGallery');
+  let galleryImages = [];
+  if (project.img && project.img.type === 'youtube') {
+    galleryImages.push({src:'https://img.youtube.com/vi/'+project.img.val+'/maxresdefault.jpg',label:'صورة المشروع الرئيسية'});
+    galleryImages.push({src:'https://img.youtube.com/vi/'+project.img.val+'/hqdefault.jpg',label:'فيديو المشروع',video:'https://www.youtube.com/watch?v='+project.img.val});
+  }
+  galleryImages.forEach(img => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.innerHTML = '<img src="'+img.src+'" alt="'+project.name+'" loading="lazy"><div class="gallery-badge">'+img.label+'</div>';
+    item.onclick = () => openLB(galleryImages, galleryImages.indexOf(img));
+    galleryDiv.appendChild(item);
+  });
+  // Add placeholder
+  const addItem = document.createElement('div');
+  addItem.className = 'gallery-add';
+  addItem.innerHTML = '➕<br>أضف صورتك';
+  addItem.onclick = () => alert('يمكنك إضافة صورك الخاصة لاحقاً عن طريق تعديل الملف');
+  galleryDiv.appendChild(addItem);
 
   document.getElementById('loading').style.display = 'none';
   document.getElementById('projectContent').style.display = 'block';
 } else {
   document.getElementById('loading').innerHTML = 'المشروع غير موجود';
 }
+
+// Lightbox
+let lbImages = [], lbIndex = 0;
+function openLB(imgs, idx) {
+  lbImages = imgs; lbIndex = idx;
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lbImg').src = imgs[idx].src;
+  lb.classList.add('open');
+}
+function closeLB(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('lightbox').classList.remove('open');
+}
+function navLB(dir) {
+  lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+  document.getElementById('lbImg').src = lbImages[lbIndex].src;
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLB();
+  if (e.key === 'ArrowRight') navLB(1);
+  if (e.key === 'ArrowLeft') navLB(-1);
+});
 </script>
 </body>
 </html>

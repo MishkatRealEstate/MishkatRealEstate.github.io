@@ -148,8 +148,7 @@ const projects = {
       {key:"الاستلام",value:"تشطيب مصنع"}
     ],
     features: ["تشطيب مصنع","جراج","مصعد","أمن وحراسة","كاميرات","أبواب مصفحة","عزل مائي وحراري","لاندسكيب"],
-    price: "خصم خاص لفترة محدودة",
-    img: {type:'cover',val:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/e120-cover.webp'}
+    price: "خصم خاص لفترة محدودة"
   },
   "beit-elwatan-8": {
     name: "بيت الوطن – الحي الثامن",
@@ -176,8 +175,7 @@ const projects = {
       {key:"الاستلام",value:"تشطيب مصنع (مباشر)"}
     ],
     features: ["جراج","مصعد","أمن وحراسة","كاميرات","أبواب مصفحة","بوابات إلكترونية","عزل","لاندسكيب"],
-    price: "أقل سعر في المنطقة",
-    img: {type:'cover',val:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/b154-cover.webp'}
+    price: "أقل سعر في المنطقة"
   }
 };
 
@@ -205,10 +203,6 @@ p.features.forEach(f => { const d = document.createElement('div'); d.textContent
 const h = document.getElementById('hero');
 if (p.img && p.img.type === 'youtube') {
   h.style.backgroundImage = "linear-gradient(rgba(13,59,79,.8),rgba(8,37,48,.8)),url('https://img.youtube.com/vi/"+p.img.val+"/maxresdefault.jpg')";
-  h.style.backgroundSize = 'cover';
-  h.style.backgroundPosition = 'center';
-} else if (p.img && p.img.type === 'cover') {
-  h.style.backgroundImage = "linear-gradient(rgba(13,59,79,.8),rgba(8,37,48,.8)),url('"+p.img.val+"')";
   h.style.backgroundSize = 'cover';
   h.style.backgroundPosition = 'center';
 }
