@@ -370,25 +370,39 @@ footer p{font-size:13px;line-height:1.7;opacity:.7}
 <script>
 // Project Data
 const projects = [
-  {id:'project-12m',name:'بيت الوطن – الحي الثاني',loc:'بيت الوطن',desc:'أحد المشروعات المميزة في بيت الوطن بالحي الثاني. موقع استراتيجي على واجهة شمالية، خطوات من View Zone.',url:'project.html?id=project-12m',color1:'#0d3b4f',color2:'#156077'},
-  {id:'project-138j',name:'بيت الوطن – الحي الثامن',loc:'بيت الوطن',desc:'الأقرب للعاصمة الإدارية ومحور محمد بن زايد. أقل كثافة سكنية في المنطقة.',url:'project.html?id=project-138j',color1:'#156077',color2:'#1a7a8f'},
-  {id:'garnet',name:'Garnet – بيت الوطن – الرابع',loc:'بيت الوطن',desc:'واجهة بحرية في الحي الرابع، أقل كثافة سكانية، خطوات من View Zone.',url:'landing.html?id=garnet',color1:'#d4a843',color2:'#e8c46a'},
-  {id:'emerald-l43',name:'Emerald – بيت الوطن – الثاني',loc:'بيت الوطن',desc:'تشطيب فاخر، موقع متميز، أمن وحراسة على أعلى مستوى.',url:'project.html?id=emerald-l43',color1:'#1a7a8f',color2:'#2196a0'},
-  {id:'topaz-a58',name:'TOPAZ – بيت الوطن – الثامن',loc:'بيت الوطن',desc:'كثافة سكانية منخفضة، لاندسكيب راقي، تشطيب مصنع.',url:'project.html?id=topaz-a58',color1:'#082530',color2:'#0d3b4f'},
-  {id:'emerald-l63',name:'Emerald – بيت الوطن – السادس',loc:'بيت الوطن',desc:'تشطيب فاخر، وحدات متاحة بمساحات متنوعة.',url:'project.html?id=emerald-l63',color1:'#156077',color2:'#0d3b4f'},
-  {id:'quartz-f72',name:'Quartz – بيت الوطن – الثاني',loc:'بيت الوطن',desc:'Smart Home، تشطيبات ذكية بأعلى المواصفات.',url:'project.html?id=quartz-f72',color1:'#d4a843',color2:'#b8942e'},
-  {id:'pearl-e120',name:'Pearl – بيت الوطن – الثاني',loc:'بيت الوطن',desc:'تشطيب مصنع فاخر، موقع استراتيجي على واجهة رئيسية.',url:'landing.html?id=pearl',color1:'#e8c46a',color2:'#d4a843'},
-  {id:'north-rehab-h40',name:'شمال الرحاب 1',loc:'شمال الرحاب',desc:'بين محور يوسف السباعي وطريق السويس، واجهات معمارية فاخرة.',url:'project.html?id=north-rehab-h40',color1:'#0d3b4f',color2:'#082530'},
-  {id:'north-rehab-h39',name:'شمال الرحاب 2',loc:'شمال الرحاب',desc:'خصوصية تامة، كثافة سكانية منخفضة، 5 دقائق من المطار.',url:'project.html?id=north-rehab-h39',color1:'#156077',color2:'#1a7a8f'},
-  {id:'amber-b154',name:'AMBER – التكميلية',loc:'المنطقة التكميلية',desc:'جنوب طريق السويس، دقائق من القاهرة الجديدة والعاصمة الإدارية.',url:'landing.html?id=amber',color1:'#d4a843',color2:'#c49a35'}
+  {id:'project-12m',name:'بيت الوطن – الحي الثاني',loc:'بيت الوطن',desc:'أحد المشروعات المميزة في بيت الوطن بالحي الثاني. موقع استراتيجي على واجهة شمالية، خطوات من View Zone.',url:'project.html?id=project-12m',color1:'#0d3b4f',color2:'#156077',youtube:'e6Bu67rwz84'},
+  {id:'project-138j',name:'بيت الوطن – الحي الثامن',loc:'بيت الوطن',desc:'الأقرب للعاصمة الإدارية ومحور محمد بن زايد. أقل كثافة سكنية في المنطقة.',url:'project.html?id=project-138j',color1:'#156077',color2:'#1a7a8f',youtube:'pfxQ6K4lTZQ'},
+  {id:'garnet',name:'Garnet – بيت الوطن – الرابع',loc:'بيت الوطن',desc:'واجهة بحرية في الحي الرابع، أقل كثافة سكانية، خطوات من View Zone.',url:'landing.html?id=garnet',color1:'#d4a843',color2:'#e8c46a',youtube:'vHErz0Lb4dI'},
+  {id:'emerald-l43',name:'Emerald – بيت الوطن – الثاني',loc:'بيت الوطن',desc:'تشطيب فاخر، موقع متميز، أمن وحراسة على أعلى مستوى.',url:'project.html?id=emerald-l43',color1:'#1a7a8f',color2:'#2196a0',cover:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/l43-cover.webp'},
+  {id:'topaz-a58',name:'TOPAZ – بيت الوطن – الثامن',loc:'بيت الوطن',desc:'كثافة سكانية منخفضة، لاندسكيب راقي، تشطيب مصنع.',url:'project.html?id=topaz-a58',color1:'#082530',color2:'#0d3b4f',youtube:'tYE8nxrpIUQ'},
+  {id:'emerald-l63',name:'Emerald – بيت الوطن – السادس',loc:'بيت الوطن',desc:'تشطيب فاخر، وحدات متاحة بمساحات متنوعة.',url:'project.html?id=emerald-l63',color1:'#156077',color2:'#0d3b4f',youtube:'SjJnOx-js9o'},
+  {id:'quartz-f72',name:'Quartz – بيت الوطن – الثاني',loc:'بيت الوطن',desc:'Smart Home، تشطيبات ذكية بأعلى المواصفات.',url:'project.html?id=quartz-f72',color1:'#d4a843',color2:'#b8942e',cover:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/f72-cover.webp'},
+  {id:'pearl-e120',name:'Pearl – بيت الوطن – الثاني',loc:'بيت الوطن',desc:'تشطيب مصنع فاخر، موقع استراتيجي على واجهة رئيسية.',url:'landing.html?id=pearl',color1:'#e8c46a',color2:'#d4a843',cover:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/e120-cover.webp'},
+  {id:'north-rehab-h40',name:'شمال الرحاب 1',loc:'شمال الرحاب',desc:'بين محور يوسف السباعي وطريق السويس، واجهات معمارية فاخرة.',url:'project.html?id=north-rehab-h40',color1:'#0d3b4f',color2:'#082530',youtube:'zFnLva7DCAo'},
+  {id:'north-rehab-h39',name:'شمال الرحاب 2',loc:'شمال الرحاب',desc:'خصوصية تامة، كثافة سكانية منخفضة، 5 دقائق من المطار.',url:'project.html?id=north-rehab-h39',color1:'#156077',color2:'#1a7a8f',cover:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/h39-cover.webp'},
+  {id:'amber-b154',name:'AMBER – التكميلية',loc:'المنطقة التكميلية',desc:'جنوب طريق السويس، دقائق من القاهرة الجديدة والعاصمة الإدارية.',url:'landing.html?id=amber',color1:'#d4a843',color2:'#c49a35',cover:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/b154-cover.webp'}
 ];
 
 // Generate Hero Slides
 const heroSlides = document.getElementById('heroSlides');
+// Video slide first
+const videoSlide = document.createElement('div');
+videoSlide.className = 'swiper-slide';
+videoSlide.innerHTML = '<div class="slide-bg"><video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;" poster="https://cdn.pixabay.com/video/2023/04/22/160032-820167242_tiny.jpg"><source src="https://cdn.pixabay.com/video/2023/04/22/160032-820167242_large.mp4" type="video/mp4"></video></div><div class="slide-overlay"></div><div class="slide-content"><div class="badge">مشكاة للتسويق العقاري</div><h2>شريكك الموثوق <span>في رحلة التملك</span></h2><p>أكثر من 11 مشروعاً في أفضل مواقع القاهرة الجديدة — بيت الوطن، شمال الرحاب، والمنطقة التكميلية</p><div class="hero-btns"><a href="#projects" class="btn btn-gold">تصفح المشروعات</a><a href="https://wa.me/201002416892" target="_blank" class="btn btn-outline-light">💬 استفسار</a></div></div>';
+heroSlides.appendChild(videoSlide);
+// Project slides with real images
 projects.forEach((p,i) => {
   const slide = document.createElement('div');
   slide.className = 'swiper-slide';
-  slide.innerHTML = '<div class="slide-bg" style="background:linear-gradient(135deg,'+p.color1+','+p.color2+')"></div><div class="slide-overlay"></div><div class="slide-content"><div class="badge">مشروع ' + p.loc + '</div><h2>' + p.name + '</h2><p>' + p.desc + '</p><div class="hero-btns"><a href="'+p.url+'" class="btn btn-gold">تفاصيل المشروع</a><a href="https://wa.me/201002416892" target="_blank" class="btn btn-outline-light">💬 استفسار</a></div></div>';
+  let bgStyle;
+  if (p.youtube) {
+    bgStyle = "background-image:url('https://img.youtube.com/vi/"+p.youtube+"/maxresdefault.jpg');background-size:cover;background-position:center";
+  } else if (p.cover) {
+    bgStyle = "background-image:url('"+p.cover+"');background-size:cover;background-position:center";
+  } else {
+    bgStyle = "background:linear-gradient(135deg,"+p.color1+","+p.color2+")";
+  }
+  slide.innerHTML = '<div class="slide-bg" style="'+bgStyle+'"></div><div class="slide-overlay"></div><div class="slide-content"><div class="badge">مشروع ' + p.loc + '</div><h2>' + p.name + '</h2><p>' + p.desc + '</p><div class="hero-btns"><a href="'+p.url+'" class="btn btn-gold">تفاصيل المشروع</a><a href="https://wa.me/201002416892" target="_blank" class="btn btn-outline-light">💬 استفسار</a></div></div>';
   heroSlides.appendChild(slide);
 });
 
@@ -398,12 +412,18 @@ new Swiper('.heroSwiper', {loop:true,autoplay:{delay:5000,disableOnInteraction:f
 // Generate Project Cards
 const projectGrid = document.getElementById('projectGrid');
 projects.forEach((p,i) => {
-  const colors = [p.color1,p.color2];
   const card = document.createElement('div');
   card.className = 'project-card fade-in';
   const isOdd = i % 2 === 0;
-  const detailUrl = p.projUrl || p.url;
-  card.innerHTML = (isOdd ? '' : '<div class="card-info"><div class="location">📍 '+p.loc+'</div><h3>'+p.name+'</h3><p>'+p.desc+'</p><div class="card-actions"><a href="'+p.url+'" class="btn-gold" style="padding:8px 18px;border-radius:25px;font-size:12px;font-weight:700">تفاصيل</a><a href="https://wa.me/201002416892" target="_blank" style="background:#25d366;color:#fff;padding:8px 18px;border-radius:25px;font-size:12px;font-weight:700">💬 استفسار</a></div></div>') + '<div class="card-img"><div class="card-img-bg" style="background:linear-gradient(135deg,'+colors[0]+','+colors[1]+')"><div class="proj-label">'+p.name+'</div></div></div>' + (isOdd ? '<div class="card-info"><div class="location">📍 '+p.loc+'</div><h3>'+p.name+'</h3><p>'+p.desc+'</p><div class="card-actions"><a href="'+p.url+'" class="btn-gold" style="padding:8px 18px;border-radius:25px;font-size:12px;font-weight:700">تفاصيل</a><a href="https://wa.me/201002416892" target="_blank" style="background:#25d366;color:#fff;padding:8px 18px;border-radius:25px;font-size:12px;font-weight:700">💬 استفسار</a></div></div>' : '');
+  let cardBg;
+  if (p.youtube) {
+    cardBg = "background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url('https://img.youtube.com/vi/"+p.youtube+"/maxresdefault.jpg');background-size:cover;background-position:center";
+  } else if (p.cover) {
+    cardBg = "background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url('"+p.cover+"');background-size:cover;background-position:center";
+  } else {
+    cardBg = "background:linear-gradient(135deg,"+p.color1+","+p.color2+")";
+  }
+  card.innerHTML = (isOdd ? '' : '<div class="card-info"><div class="location">📍 '+p.loc+'</div><h3>'+p.name+'</h3><p>'+p.desc+'</p><div class="card-actions"><a href="'+p.url+'" class="btn-gold" style="padding:8px 18px;border-radius:25px;font-size:12px;font-weight:700">تفاصيل</a><a href="https://wa.me/201002416892" target="_blank" style="background:#25d366;color:#fff;padding:8px 18px;border-radius:25px;font-size:12px;font-weight:700">💬 استفسار</a></div></div>') + '<div class="card-img"><div class="card-img-bg" style="'+cardBg+'"><div class="proj-label">'+p.name+'</div></div></div>' + (isOdd ? '<div class="card-info"><div class="location">📍 '+p.loc+'</div><h3>'+p.name+'</h3><p>'+p.desc+'</p><div class="card-actions"><a href="'+p.url+'" class="btn-gold" style="padding:8px 18px;border-radius:25px;font-size:12px;font-weight:700">تفاصيل</a><a href="https://wa.me/201002416892" target="_blank" style="background:#25d366;color:#fff;padding:8px 18px;border-radius:25px;font-size:12px;font-weight:700">💬 استفسار</a></div></div>' : '');
   projectGrid.appendChild(card);
 });
 

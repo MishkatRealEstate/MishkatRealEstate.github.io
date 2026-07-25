@@ -134,7 +134,8 @@ const projects = {
       {key:"الاستلام",value:"تشطيب مصنع (مباشر)"}
     ],
     features: ["زجاج مرآة","دهانات جوتاشيلد","حديد مشغول","واجهات حجر","إضاءة مباشرة","إضاءة غير مباشرة","جراج","مصعد","أمن","كاميرات"],
-    price: "وفر 50% وأكثر"
+    price: "وفر 50% وأكثر",
+    img: {type:'youtube',val:'vHErz0Lb4dI'}
   },
   "pearl": {
     name: "Pearl – بيت الوطن – الحي الثاني",
@@ -147,7 +148,8 @@ const projects = {
       {key:"الاستلام",value:"تشطيب مصنع"}
     ],
     features: ["تشطيب مصنع","جراج","مصعد","أمن وحراسة","كاميرات","أبواب مصفحة","عزل مائي وحراري","لاندسكيب"],
-    price: "خصم خاص لفترة محدودة"
+    price: "خصم خاص لفترة محدودة",
+    img: {type:'cover',val:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/e120-cover.webp'}
   },
   "beit-elwatan-8": {
     name: "بيت الوطن – الحي الثامن",
@@ -160,7 +162,8 @@ const projects = {
       {key:"الاستلام",value:"تشطيب مصنع"}
     ],
     features: ["جراج خاص","مصعد كهربائي","أمن وحراسة","كاميرات مراقبة","أبواب مصفحة","بوابات إلكترونية","نظام إدارة المبنى","لاندسكيب","توصيلات سباكة","عزل مائي وحراري"],
-    price: "وفر 50% وأكثر"
+    price: "وفر 50% وأكثر",
+    img: {type:'youtube',val:'pfxQ6K4lTZQ'}
   },
   "amber": {
     name: "AMBER – المنطقة التكميلية",
@@ -173,7 +176,8 @@ const projects = {
       {key:"الاستلام",value:"تشطيب مصنع (مباشر)"}
     ],
     features: ["جراج","مصعد","أمن وحراسة","كاميرات","أبواب مصفحة","بوابات إلكترونية","عزل","لاندسكيب"],
-    price: "أقل سعر في المنطقة"
+    price: "أقل سعر في المنطقة",
+    img: {type:'cover',val:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/b154-cover.webp'}
   }
 };
 
@@ -196,6 +200,18 @@ p.details.forEach(d => { const tr = document.createElement('tr'); tr.innerHTML =
 
 const features = document.getElementById('featuresList');
 p.features.forEach(f => { const d = document.createElement('div'); d.textContent = f; features.appendChild(d); });
+
+// Hero background image
+const h = document.getElementById('hero');
+if (p.img && p.img.type === 'youtube') {
+  h.style.backgroundImage = "linear-gradient(rgba(13,59,79,.8),rgba(8,37,48,.8)),url('https://img.youtube.com/vi/"+p.img.val+"/maxresdefault.jpg')";
+  h.style.backgroundSize = 'cover';
+  h.style.backgroundPosition = 'center';
+} else if (p.img && p.img.type === 'cover') {
+  h.style.backgroundImage = "linear-gradient(rgba(13,59,79,.8),rgba(8,37,48,.8)),url('"+p.img.val+"')";
+  h.style.backgroundSize = 'cover';
+  h.style.backgroundPosition = 'center';
+}
 
 document.getElementById('projectInput').value = p.name;
 document.getElementById('ctaForm').href = '#form';
