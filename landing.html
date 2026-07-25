@@ -51,6 +51,24 @@ section{padding:40px 0}
 .fixed-wa:hover{transform:scale(1.1)}
 .fixed-chat{position:fixed;bottom:20px;right:20px;background:var(--gold);color:var(--primary-dark);width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(212,168,67,.4);z-index:999;font-size:24px;transition:.3s;border:none;cursor:pointer}
 .fixed-chat:hover{transform:scale(1.1)}
+/* Gallery */
+.gallery{margin-top:30px}
+.gallery h3{font-size:20px;color:var(--primary);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--gold);display:inline-block}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:12px}
+.gallery-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;cursor:pointer;transition:.3s;background:var(--bg)}
+.gallery-item:hover{transform:scale(1.02);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery-item .gallery-badge{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;padding:4px 10px;border-radius:6px}
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox img{max-width:90vw;max-height:90vh;border-radius:8px}
+.lightbox .close-lb{position:absolute;top:20px;left:20px;color:#fff;font-size:30px;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);border-radius:50%;border:none}
+.lightbox .close-lb:hover{background:rgba(255,255,255,.2)}
+.lightbox .nav-lb{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:36px;cursor:pointer;padding:12px;background:rgba(255,255,255,.08);border-radius:50%;width:52px;height:52px;display:flex;align-items:center;justify-content:center;border:none;transition:.2s}
+.lightbox .nav-lb:hover{background:rgba(255,255,255,.2)}
+.lightbox .nav-lb.prev{right:20px}
+.lightbox .nav-lb.next{left:20px}
 @media(max-width:768px){.hero h1{font-size:26px}.hero .price{font-size:20px}.why-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -88,6 +106,20 @@ section{padding:40px 0}
     <div class="section-title"><h2>🏗️ المواصفات والتشطيبات</h2></div>
     <div class="features" id="featuresList"></div>
   </section>
+
+  <!-- Gallery -->
+  <section>
+    <div class="section-title"><h2>📷 معرض الصور</h2></div>
+    <div class="gallery-grid" id="projectGallery"></div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLB(event)">
+    <button class="close-lb" onclick="closeLB()">✕</button>
+    <button class="nav-lb prev" onclick="navLB(-1)">❮</button>
+    <img id="lbImg" src="" alt="">
+    <button class="nav-lb next" onclick="navLB(1)">❯</button>
+  </div>
 
   <!-- Form -->
   <section id="form">
@@ -132,7 +164,10 @@ const projects = {
       {key:"تشطيب الواجهة",value:"Mirror Glass - جوتاشيلد جوتن - حديد فيرفورجيه - حجر"}
     ],
     features: ["Mirror Glass","دهانات Jotashield Jotun","حديد فيرفورجيه","تطعيمات حجر","Direct & Indirect lighting","جراج","أمن","كاميرات مراقبة","انتركم","أبواب مصفحة","بوابات إلكترونية","معدات المنازل الذكية","سلالم رخامية","عزل مائي وحراري","تشطيبات فاخرة للمدخل"],
-    img: 'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/b126-cover.webp'
+    img: 'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/b126-cover.webp',
+    gallery: [
+      {src:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/b126-cover.webp',label:'Garnet B126 - واجهة المشروع'}
+    ]
   },
   "pearl": {
     name: "Pearl – بيت الوطن – الحي الثاني",
@@ -145,7 +180,10 @@ const projects = {
       {key:"تشطيب الواجهة",value:"زجاج سيكوريت - جوتاشيلد جوتن - حديد مشغول - حجر"}
     ],
     features: ["زجاج سيكوريت","دهانات جوتاشيلد جوتن","حديد مشغول","جبس","تطعيمات حجر","جراج","مصعد","أمن","كاميرات","أبواب مصفحة","عزل مائي وحراري","لاندسكيب"],
-    img: 'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/e120-cover.webp'
+    img: 'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/e120-cover.webp',
+    gallery: [
+      {src:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/e120-cover.webp',label:'Pearl E120 - واجهة المشروع'}
+    ]
   },
   "beit-elwatan-8": {
     name: "بيت الوطن – الحي الثامن",
@@ -158,7 +196,10 @@ const projects = {
       {key:"المميزات",value:"أقل كثافة سكنية - نظام إدارة المبنى"}
     ],
     features: ["جراج","مصعد","أمن","كاميرات مراقبة","أبواب مصفحة","الوميتال على الواجهة","بوابات إلكترونية","نظام إدارة المبنى","لاندسكيب","خزانات مياه","نظام بطاقة ذكية","سلالم رخامية","عزل مائي وحراري","تشطيبات فاخرة للمدخل"],
-    img: 'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-cover.webp'
+    img: 'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-cover.webp',
+    gallery: [
+      {src:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-cover.webp',label:'مشروع 138J - الحي الثامن'}
+    ]
   },
   "amber": {
     name: "AMBER – المنطقة التكميلية",
@@ -171,7 +212,10 @@ const projects = {
       {key:"تشطيب الواجهة",value:"Mirror Glass - جوتاشيلد جوتن - حديد فيرفورجيه - حجر"}
     ],
     features: ["جراج","مصعد","أمن","كاميرات مراقبة","انتركم","أبواب مصفحة","الوميتال على الواجهة","واجهة كلادينج","بوابات إلكترونية","مولدات احتياطية","خزانات مياه","إضاءة ذكية","نظام بطاقة ذكية","سلالم رخامية","تشطيبات فاخرة للمدخل","عزل مائي وحراري","لاندسكيب"],
-    img: 'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/b154-cover.webp'
+    img: 'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/b154-cover.webp',
+    gallery: [
+      {src:'https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/b154-cover.webp',label:'AMBER B154 - المنطقة التكميلية'}
+    ]
   }
 };
 
@@ -204,6 +248,41 @@ if (p.img) {
 
 document.getElementById('projectInput').value = p.name;
 document.getElementById('ctaForm').href = '#form';
+
+// Gallery
+const galleryDiv = document.getElementById('projectGallery');
+const galleryImages = p.gallery || [];
+if (p.img && !galleryImages.find(g => g.src === p.img)) {
+  galleryImages.unshift({src:p.img,label:'صورة المشروع الرئيسية'});
+}
+galleryImages.forEach(img => {
+  const item = document.createElement('div');
+  item.className = 'gallery-item';
+  item.innerHTML = '<img src="'+img.src+'" alt="'+p.name+'" loading="lazy"><div class="gallery-badge">'+img.label+'</div>';
+  item.onclick = () => openLB(galleryImages, galleryImages.indexOf(img));
+  galleryDiv.appendChild(item);
+});
+
+// Lightbox
+let lbImages = [], lbIndex = 0;
+function openLB(imgs, idx) {
+  lbImages = imgs; lbIndex = idx;
+  document.getElementById('lbImg').src = imgs[idx].src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLB(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('lightbox').classList.remove('open');
+}
+function navLB(dir) {
+  lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+  document.getElementById('lbImg').src = lbImages[lbIndex].src;
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLB();
+  if (e.key === 'ArrowRight') navLB(1);
+  if (e.key === 'ArrowLeft') navLB(-1);
+});
 
 // Form submit to Sheet
 document.getElementById('contactForm').addEventListener('submit', function(e) {
