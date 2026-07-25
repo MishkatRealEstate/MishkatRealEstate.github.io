@@ -114,8 +114,7 @@ header {
 
 /* Gallery */
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-.gallery img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; transition: 0.3s; cursor: pointer; }
-.gallery img:hover { transform: scale(1.03); }
+.gallery div { width: 100%; height: 250px; border-radius: 10px; display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:700; }
 
 /* Contact CTA */
 .cta-section {
@@ -455,7 +454,7 @@ if (project) {
   document.getElementById('pageTitle').textContent = project.name + ' | مشكاة';
   document.getElementById('projectName').textContent = project.name;
   document.getElementById('projectLocation').textContent = '📍 ' + project.location;
-  document.getElementById('projectHero').style.backgroundImage = 'url(' + project.cover + ')';
+  document.getElementById('projectHero').style.background = 'linear-gradient(135deg, #0d3b4f, #082530)';
   document.getElementById('projectDesc').textContent = project.description;
 
   // Details
@@ -472,16 +471,14 @@ if (project) {
 
   // Gallery
   const galleryDiv = document.getElementById('projectGallery');
-  project.images.forEach(img => {
-    galleryDiv.innerHTML += '<img src="' + img + '" alt="' + project.name + '" onclick="window.open(this.src)">';
-  });
+  const colors = ['#0d3b4f','#156077','#d4a843','#082530','#e8c46a','#1a7a8f'];
+  for (let i = 0; i < 3; i++) {
+    const c = colors[i % colors.length];
+    galleryDiv.innerHTML += '<div style="height:250px;background:linear-gradient(135deg,'+c+','+colors[(i+1)%colors.length]+');border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;cursor:default;">' + project.name + '</div>';
+  }
 
   // Map
-  if (project.map) {
-    document.getElementById('projectMap').innerHTML = '<img src="' + project.map + '" alt="خريطة ' + project.name + '" style="width:100%;height:100%;object-fit:cover;">';
-  } else {
-    document.getElementById('projectMap').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-light);">خريطة المشروع متوفرة قريباً</div>';
-  }
+  document.getElementById('projectMap').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-light);font-size:16px;">🗺️ خريطة المشروع متوفرة قريباً</div>';
 
   document.getElementById('loading').style.display = 'none';
   document.getElementById('projectContent').style.display = 'block';

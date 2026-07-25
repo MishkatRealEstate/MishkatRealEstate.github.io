@@ -27,9 +27,8 @@ section{padding:40px 0}
 .section-title h2{font-size:26px;color:var(--primary);position:relative;display:inline-block}
 .section-title h2::after{content:'';display:block;width:60px;height:3px;background:var(--gold);margin:8px auto}
 .gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-radius:12px;overflow:hidden}
-.gallery img{width:100%;height:250px;object-fit:cover;cursor:pointer;transition:.3s}
-.gallery img:hover{transform:scale(1.03)}
-.gallery img:first-child{grid-column:1/-1;height:320px}
+.gallery div{width:100%;height:250px;border-radius:0!important}
+.gallery div:first-child{grid-column:1/-1;height:320px}
 .features{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
 .features div{background:var(--white);padding:12px 16px;border-radius:10px;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:8px}
 .features div::before{content:'✓';color:var(--gold);font-weight:800;font-size:18px}
@@ -55,7 +54,7 @@ section{padding:40px 0}
 .fixed-wa:hover{transform:scale(1.1)}
 .fixed-chat{position:fixed;bottom:20px;right:20px;background:var(--gold);color:var(--primary-dark);width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(212,168,67,.4);z-index:999;font-size:24px;transition:.3s;border:none;cursor:pointer}
 .fixed-chat:hover{transform:scale(1.1)}
-@media(max-width:768px){.hero h1{font-size:26px}.hero .price{font-size:20px}.gallery{grid-template-columns:1fr}.gallery img{height:200px}.gallery img:first-child{height:240px}.why-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.hero h1{font-size:26px}.hero .price{font-size:20px}.gallery{grid-template-columns:1fr}.gallery div{height:200px}.gallery div:first-child{height:240px}.why-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -141,10 +140,7 @@ const projects = {
   "garnet": {
     name: "Garnet – بيت الوطن – الحي الرابع",
     location: "بيت الوطن - الحي الرابع - القاهرة الجديدة",
-    cover: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-cover-mobile.webp",
     description: "يتميز المشروع بموقع فريد على واجهة بحرية في بيت الوطن الحي الرابع، يتمتع بقلة الكثافة السكانية والخصوصية التامة، بخطوات من أكبر منطقة خدمات وترفيه View Zone في الحي الرابع. دقيقتان من شارع النوادي، دقائق من مول مصر وميدان المشير طنطاوي والقاهرة الجديدة والعاصمة الإدارية.",
-    images: ["https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-cover-mobile.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-cover.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-2.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-3.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-4.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-5.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-6.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-7.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-8.webp"],
-    map: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/garnet-map.jpg",
     details: [
       {key:"المساحات",value:"130-225 م² (متكرر + رووف + بدروم)"},
       {key:"الموقع",value:"بيت الوطن - الحي الرابع - واجهة بحرية"},
@@ -157,10 +153,7 @@ const projects = {
   "pearl": {
     name: "Pearl – بيت الوطن – الحي الثاني",
     location: "بيت الوطن - الحي الثاني - القاهرة الجديدة",
-    cover: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-cover-mobile.webp",
     description: "أحد المشروعات المميزة في بيت الوطن بالحي الثاني. يتميز بتشطيب مصنع فاخر، موقع استراتيجي على واجهة رئيسية، وقلة الكثافة السكانية. قريب من جميع الخدمات والمواصلات.",
-    images: ["https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-cover-mobile.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-cover.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-2.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-3.jpg","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-4.jpg","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-5.jpg","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-6.jpg"],
-    map: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/pearl-map.jpg",
     details: [
       {key:"المساحات",value:"متنوعة"},
       {key:"الموقع",value:"بيت الوطن - الحي الثاني"},
@@ -173,10 +166,7 @@ const projects = {
   "beit-elwatan-8": {
     name: "بيت الوطن – الحي الثامن",
     location: "بيت الوطن - الحي الثامن - القاهرة الجديدة",
-    cover: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-cover-mobile.webp",
     description: "مشروع في بيت الوطن بالحي الثامن، الأقرب للعاصمة الإدارية ومحور محمد بن زايد. يتميز بخطوات من View Zone، دقيقتان من شارع النوادي، وأقل كثافة سكنية في المنطقة.",
-    images: ["https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-cover-mobile.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-cover.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-map.jpg"],
-    map: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/j138-map.jpg",
     details: [
       {key:"المساحات",value:"175-200 م²"},
       {key:"الموقع",value:"الحي الثامن - بيت الوطن"},
@@ -189,10 +179,7 @@ const projects = {
   "amber": {
     name: "AMBER – المنطقة التكميلية",
     location: "المنطقة التكميلية - جنوب طريق السويس",
-    cover: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-cover-mobile.webp",
     description: "مشروع متميز في المنطقة التكميلية جنوب طريق السويس. يبعد دقائق من القاهرة الجديدة والعاصمة الإدارية. كثافة سكانية منخفضة للغاية، خدمات وترفيه على أعلى مستوى.",
-    images: ["https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-cover-mobile.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-cover.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-2.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-3.webp","https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-4.webp"],
-    map: "https://arceliarealestate.com/mainsite/wp-content/uploads/2025/02/amber-map.jpg",
     details: [
       {key:"المساحات",value:"متنوعة"},
       {key:"الموقع",value:"المنطقة التكميلية - جنوب طريق السويس"},
@@ -219,7 +206,13 @@ document.getElementById('heroPrice').textContent = p.price;
 document.getElementById('heroDesc').textContent = p.description.substring(0,150)+'...';
 
 const gallery = document.getElementById('gallery');
-p.images.forEach(i => { const img = document.createElement('img'); img.src = i; img.alt = p.name; img.onclick = () => window.open(i); gallery.appendChild(img); });
+const gcolors = ['#0d3b4f','#156077','#d4a843','#082530','#e8c46a','#1a7a8f'];
+for (let g = 0; g < 3; g++) {
+  const div = document.createElement('div');
+  div.style.cssText = 'height:250px;background:linear-gradient(135deg,'+gcolors[g]+','+gcolors[(g+1)%gcolors.length]+');border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;';
+  div.textContent = p.name;
+  gallery.appendChild(div);
+}
 
 const details = document.getElementById('detailsTable');
 p.details.forEach(d => { const tr = document.createElement('tr'); tr.innerHTML = '<td>'+d.key+'</td><td>'+d.value+'</td>'; details.appendChild(tr); });
@@ -227,7 +220,7 @@ p.details.forEach(d => { const tr = document.createElement('tr'); tr.innerHTML =
 const features = document.getElementById('featuresList');
 p.features.forEach(f => { const d = document.createElement('div'); d.textContent = f; features.appendChild(d); });
 
-document.getElementById('projectMap').innerHTML = '<img src="'+p.map+'" alt="خريطة '+p.name+'" style="width:100%;height:auto;border-radius:12px;">';
+document.getElementById('projectMap').innerHTML = '<div style="padding:40px;text-align:center;background:#f8f7f4;border-radius:12px;color:#666;font-size:16px;">🗺️ خريطة المشروع متوفرة قريباً</div>';
 
 document.getElementById('projectInput').value = p.name;
 document.getElementById('ctaForm').href = '#form';
