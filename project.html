@@ -112,10 +112,6 @@ header {
 }
 .spec-icon { font-size: 16px; }
 
-/* Gallery */
-.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-.gallery div { width: 100%; height: 250px; border-radius: 10px; display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:700; }
-
 /* Contact CTA */
 .cta-section {
   background: var(--primary); padding: 40px; border-radius: 14px;
@@ -134,8 +130,7 @@ header {
 .btn-whatsapp:hover { background: #20bd5a; transform: translateY(-2px); }
 
 /* Map */
-.map-container { border-radius: 14px; overflow: hidden; height: 300px; }
-.map-container iframe { width: 100%; height: 100%; border: none; }
+
 
 /* Footer */
 footer {
@@ -202,16 +197,7 @@ footer {
             <h3>تفاصيل الوحدات</h3>
             <div id="projectDetails"></div>
           </div>
-          <div class="info-card">
-            <h3>موقع المشروع</h3>
-            <div class="map-container" id="projectMap"></div>
-          </div>
         </div>
-      </div>
-
-      <div class="info-card">
-        <h3>معرض الصور</h3>
-        <div class="gallery" id="projectGallery"></div>
       </div>
 
       <div class="cta-section">
@@ -286,7 +272,6 @@ const projects = {
     name: "TOPAZ – بيت الوطن – الحي الثامن",
     location: "بيت الوطن - الحي الثامن - القاهرة الجديدة",
     description: "مشروع TOPAZ في بيت الوطن بالحي الثامن. يتميز بموقع استراتيجي: 5 دقائق لطريق السويس، 3 دقائق لمحور بن زايد، 5 دقائق لمدخل العاصمة الإدارية. كثافة سكانية منخفضة وخصوصية عالية.",
-    map: "",
     details: [
       { key: "المساحات (أرضي)", value: "198 م² (نوعان)" },
       { key: "المساحات (متكرر)", value: "229 م² (نوعان)" },
@@ -359,7 +344,6 @@ const projects = {
     name: "AMBER – المنطقة التكميلية",
     location: "المنطقة التكميلية - جنوب طريق السويس",
     description: "مشروع AMBER في المنطقة التكميلية جنوب طريق السويس. امتداد مباشر لبيت الوطن على شارع 90 الشمالي. دقائق من مدينة نصر والقاهرة الجديدة، قريبة من العاصمة الإدارية ومدينة المستقبل ومدينتي. يتميز بموقع استراتيجي يربط بين عدة مناطق حيوية.",
-    map: "",
     details: [
       { key: "المساحات (أرضي)", value: "127 م²، 133 م²" },
       { key: "المساحات (متكرر)", value: "153 م² (أربعة أنواع)" },
@@ -395,16 +379,7 @@ if (project) {
     featuresDiv.innerHTML += '<div class="spec-item"><span class="spec-icon">✦</span>' + f + '</div>';
   });
 
-  // Gallery
-  const galleryDiv = document.getElementById('projectGallery');
-  const colors = ['#0d3b4f','#156077','#d4a843','#082530','#e8c46a','#1a7a8f'];
-  for (let i = 0; i < 3; i++) {
-    const c = colors[i % colors.length];
-    galleryDiv.innerHTML += '<div style="height:250px;background:linear-gradient(135deg,'+c+','+colors[(i+1)%colors.length]+');border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;cursor:default;">' + project.name + '</div>';
-  }
-
-  // Map
-  document.getElementById('projectMap').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-light);font-size:16px;">🗺️ خريطة المشروع متوفرة قريباً</div>';
+  // Gallery & Map removed (pending images)
 
   document.getElementById('loading').style.display = 'none';
   document.getElementById('projectContent').style.display = 'block';
@@ -414,3 +389,4 @@ if (project) {
 </script>
 </body>
 </html>
+

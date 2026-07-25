@@ -26,9 +26,7 @@ section{padding:40px 0}
 .section-title{text-align:center;margin-bottom:30px}
 .section-title h2{font-size:26px;color:var(--primary);position:relative;display:inline-block}
 .section-title h2::after{content:'';display:block;width:60px;height:3px;background:var(--gold);margin:8px auto}
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-radius:12px;overflow:hidden}
-.gallery div{width:100%;height:250px;border-radius:0!important}
-.gallery div:first-child{grid-column:1/-1;height:320px}
+
 .features{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
 .features div{background:var(--white);padding:12px 16px;border-radius:10px;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:8px}
 .features div::before{content:'✓';color:var(--gold);font-weight:800;font-size:18px}
@@ -54,7 +52,7 @@ section{padding:40px 0}
 .fixed-wa:hover{transform:scale(1.1)}
 .fixed-chat{position:fixed;bottom:20px;right:20px;background:var(--gold);color:var(--primary-dark);width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(212,168,67,.4);z-index:999;font-size:24px;transition:.3s;border:none;cursor:pointer}
 .fixed-chat:hover{transform:scale(1.1)}
-@media(max-width:768px){.hero h1{font-size:26px}.hero .price{font-size:20px}.gallery{grid-template-columns:1fr}.gallery div{height:200px}.gallery div:first-child{height:240px}.why-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.hero h1{font-size:26px}.hero .price{font-size:20px}.why-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -71,12 +69,6 @@ section{padding:40px 0}
 </div>
 
 <div class="container">
-  <!-- Gallery -->
-  <section>
-    <div class="section-title"><h2>📸 معرض الصور</h2></div>
-    <div class="gallery" id="gallery"></div>
-  </section>
-
   <!-- Why -->
   <section>
     <div class="section-title"><h2>⭐ لماذا هذا المشروع؟</h2></div>
@@ -97,12 +89,6 @@ section{padding:40px 0}
   <section>
     <div class="section-title"><h2>🏗️ المواصفات والتشطيبات</h2></div>
     <div class="features" id="featuresList"></div>
-  </section>
-
-  <!-- Location -->
-  <section>
-    <div class="section-title"><h2>🗺️ الموقع على الخريطة</h2></div>
-    <div id="projectMap" style="border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08)"></div>
   </section>
 
   <!-- Form -->
@@ -205,22 +191,11 @@ document.getElementById('heroName').textContent = p.name;
 document.getElementById('heroPrice').textContent = p.price;
 document.getElementById('heroDesc').textContent = p.description.substring(0,150)+'...';
 
-const gallery = document.getElementById('gallery');
-const gcolors = ['#0d3b4f','#156077','#d4a843','#082530','#e8c46a','#1a7a8f'];
-for (let g = 0; g < 3; g++) {
-  const div = document.createElement('div');
-  div.style.cssText = 'height:250px;background:linear-gradient(135deg,'+gcolors[g]+','+gcolors[(g+1)%gcolors.length]+');border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700;';
-  div.textContent = p.name;
-  gallery.appendChild(div);
-}
-
 const details = document.getElementById('detailsTable');
 p.details.forEach(d => { const tr = document.createElement('tr'); tr.innerHTML = '<td>'+d.key+'</td><td>'+d.value+'</td>'; details.appendChild(tr); });
 
 const features = document.getElementById('featuresList');
 p.features.forEach(f => { const d = document.createElement('div'); d.textContent = f; features.appendChild(d); });
-
-document.getElementById('projectMap').innerHTML = '<div style="padding:40px;text-align:center;background:#f8f7f4;border-radius:12px;color:#666;font-size:16px;">🗺️ خريطة المشروع متوفرة قريباً</div>';
 
 document.getElementById('projectInput').value = p.name;
 document.getElementById('ctaForm').href = '#form';
