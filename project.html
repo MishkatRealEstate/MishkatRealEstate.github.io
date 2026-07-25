@@ -121,8 +121,6 @@ header {
 .gallery-item:hover{transform:scale(1.02);box-shadow:0 6px 20px rgba(0,0,0,.12)}
 .gallery-item img{width:100%;height:100%;object-fit:cover;display:block}
 .gallery-item .gallery-badge{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;padding:4px 10px;border-radius:6px}
-.gallery-add{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;border:2px dashed var(--gold);border-radius:12px;color:var(--gold);font-size:14px;font-weight:600;cursor:pointer;transition:.3s;background:transparent}
-.gallery-add:hover{background:rgba(212,168,67,.08)}
 /* Lightbox */
 .lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s}
 .lightbox.open{opacity:1;pointer-events:auto}
@@ -224,7 +222,6 @@ footer {
       <!-- Gallery -->
       <div class="gallery">
         <h3>📷 معرض الصور والفيديو</h3>
-        <p style="color:var(--text-light);font-size:13px;margin-bottom:8px">اضغط على أي صورة لتكبيرها — يمكنك إضافة صور وفيديوهات المشروع لاحقاً</p>
         <div class="gallery-grid" id="projectGallery"></div>
       </div>
 
@@ -445,12 +442,7 @@ if (project) {
     item.onclick = () => openLB(galleryImages, galleryImages.indexOf(img));
     galleryDiv.appendChild(item);
   });
-  // Add placeholder
-  const addItem = document.createElement('div');
-  addItem.className = 'gallery-add';
-  addItem.innerHTML = '➕<br>أضف صورتك';
-  addItem.onclick = () => alert('يمكنك إضافة صورك الخاصة لاحقاً عن طريق تعديل الملف');
-  galleryDiv.appendChild(addItem);
+  // No placeholder - gallery only shows available images
 
   document.getElementById('loading').style.display = 'none';
   document.getElementById('projectContent').style.display = 'block';
